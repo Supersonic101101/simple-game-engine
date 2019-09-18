@@ -18,12 +18,9 @@ public class Snake{
     private List<SnakeSegment> segments = new List<SnakeSegment>();
 
     public Snake(int x, int y, double speed){
-        /*  ------------------------------------------
-            2.1
-            ------------------------------------------   
-            Initialize the x, y and speed fields 
-            using the values passed to the constructor
-        */
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
 
         
         /*  Adds a segment to the segments List
@@ -63,29 +60,12 @@ public class Snake{
     }
 
     public void AddSegment(){
-        /*  ------------------------------------------
-            2.2
-            ------------------------------------------   
-            The AddSegment method adds a segment to our snake.
+        int lastSegment = segments.Add(new SnakeSegment(x, y, 'O'));
+        Segments.Count(segments);
 
-            1. First you need to store the last segment in our segments List
-            in a variable called lastSegment. We can access items in a List
-            the same way we access elements in an array. For instance 
-            segments[0] will get the first item in the segments List.
-            You can use the segments.Count property to determine the number of
-            elements in the segments List.
-
-            2. Next we need to create the new Segment that we can add to the 
-            segments List. We can store it in a variable called newSegment.
-            If you look at the constructor for SnakeSegment you will see we need 
-            to specify the x and y position as well as a character that will represent
-            the segment visually.
-            The x and y positions should be the PrevX and PrevY positions of 
-            the lastSegment. The character must be an 'o'.
-
-            3. use the segments.Add method to add the newSegment to the back of
-            the segments List.
-        */
+        int newSegment = lastSegment;
+        Segments.Add(newSegment);
+          
     }
 
     public void UpdateSegments(){
@@ -108,16 +88,16 @@ public class Snake{
     }
 
     public bool IsHeadTouchingBody(){
-        /*  ------------------------------------------
-            2.4
-            ------------------------------------------   
-            This method should return true if the first item in the segments List
-            has the exact same x and y positions as any of the other items in the
-            segments List.
+        if(newSegment.x + newSegment.y = lastSegment.x + lastSegment.y)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 
-            It should return false otherwise.
-        */
-        return false;
+        return IsHeadTouchingBody;
     }
 
     public void Update(){
@@ -129,12 +109,16 @@ public class Snake{
             yDir = 1;
             xDir = 0;
         }
-        /*  ------------------------------------------
-            2.5
-            ------------------------------------------   
-            Complete this decision structure to also update the 
-            directions when the LEFT and RIGHT keys are pressed.
-        */
+        else if(Input.KeyPressed == InputType.LEFT)
+        {
+            yDir = 0;
+            xDir = -1;
+        }
+        else if(Input.KeyPressed == InputType.RIGHT)
+        {
+            yDir = 0;
+            xDir = 1;
+        }
 
         /*  ------------------------------------------
             2.6
