@@ -8,14 +8,9 @@ public class Pickup{
     private Random r = new Random();
 
     public Pickup(int maxX, int maxY){
-        /*  ------------------------------------------
-            3.1
-            ------------------------------------------   
-            Initialize the maxX and maxY fields 
-            using the values passed to the constructor
-
-            Call the SetPosition method.
-        */
+        this.maxX = maxX;
+        this.maxY = maxY;
+        SetPosition();
     }
 
     public int X {
@@ -27,12 +22,8 @@ public class Pickup{
     }
 
     public void SetPosition(){
-        /*  ------------------------------------------
-            3.2
-            ------------------------------------------   
-            SetPosition should set x to a random value 
-            between 0 and maxX, and y to a random value 
-            between 0 maxY.
-        */
+        x = r.Next(0, maxX);
+        y = r.Next(0, maxY);
+           
     }
 }
